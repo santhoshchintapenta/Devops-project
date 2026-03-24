@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "student-feedback-app"
+        CONTAINER_NAME = "student-feedback-container"
+    }
+
+    stages {
+        stage('Clone Source') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $IMAGE_NAME .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'docker images | grep $IMAGE_NAME'
+            }
+        }
+
+        stage('Deploy with Ansible') {
+            steps {
+                sh 'ansible-playbook -i ansible/inventory ansible/deploy.yml'
+            }
+        }
+    }
+}

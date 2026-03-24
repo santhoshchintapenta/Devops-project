@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recent Feedback</h1>
+
+        {% if feedbacks %}
+            <div class="feedback-list">
+                {% for item in feedbacks %}
+                    <div class="feedback-card">
+                        <h3>{{ item['name'] }}</h3>
+                        <p>{{ item['message'] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No feedback submitted yet.</p>
+        {% endif %}
+
+        <a class="view-link" href="{{ url_for('index') }}">Back to Form</a>
+    </div>
+</body>
+</html>

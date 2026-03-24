@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Feedback Portal</h1>
+
+        <form method="POST" action="/">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="message">Feedback</label>
+            <textarea id="message" name="message" placeholder="Enter your feedback" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <a class="view-link" href="{{ url_for('feedback') }}">View Recent Feedback</a>
+    </div>
+</body>
+</html>
