@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy with Ansible') {
             steps {
-                sh 'ansible-playbook -i ansible/inventory ansible/deploy.yml'
+                sh 'ansible-playbook -i santhosh/ansible/inventory santhosh/ansible/deploy.yml'
             }
         }
     }
